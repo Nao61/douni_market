@@ -1,0 +1,556 @@
+<!--
+Project: Douni Market - E-commerce (Prototype)
+Author: Naofal Ichola
+Date: June 2024
+Description: Boutique en ligne pour Douni Market avec Tailwind CSS et GSAP.
+Enjoy! --  ceci est pour l'anniversaire de Douni Market 🎁
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Douni Market — Boutique</title>
+    <meta
+      name="description"
+      content="Douni Market - tissus Good Luck, crêpes, colliers, piercings, bouquets. Livraison partout au Bénin."
+    />
+
+    <!-- Tailwind CSS  -->
+    <link href="./assets/output.css" rel="stylesheet" />
+
+    <!-- GSAP -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+      integrity=""
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+      integrity=""
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Favicon (remplacé par le logo) -->
+    <link rel="icon" href="assets/img/DouniMarket.png" type="image/png" />
+
+    <style>
+      /* small extra CSS (you can move to assets/styles.css) */
+      :root {
+        --accent: #d97706;
+        --muted: #f7f3f0;
+      }
+      body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(6px);
+      }
+      .product-img {
+        height: 220px;
+        object-fit: cover;
+      }
+      .badge-sale {
+        background: linear-gradient(90deg, #fb7185, #f97316);
+        color: white;
+      }
+      /* cart drawer scroll */
+      .cart-list {
+        max-height: 48vh;
+        overflow: auto;
+      }
+      .active-category {
+        background-color: var(--accent);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      /* Navbar link hover effect */
+      .nav-link {
+        position: relative;
+        /* display: inline-block; */
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        left: 15px;
+        bottom: 2px;
+        width: 70%;
+        height: 3px;
+        background-color: #ef4444;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.6s ease;
+      }
+
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-b from-pink-50 via-white to-pink-100 text-gray-800"
+  >
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 glass">
+      <nav
+        class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <a href="index.html"
+            ><img
+              src="assets/img/DouniMarket.png"
+              alt="Logo Douni Market"
+              class="w-12 h-12 object-contain"
+          /></a>
+          <div>
+            <h1 class="font-semibold text-xl">Douni Market</h1>
+            <p class="text-xs text-gray-500">
+              L'élégance à portée de main •<span class="sm:hidden"><br /></span>
+              Livraison partout au Bénin
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a
+            href="#shop"
+            class="nav-link hidden md:inline-block px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            >Boutique</a
+          >
+          <a
+            href="#about"
+            class="nav-link hidden md:inline-block px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            >À propos</a
+          >
+          <button
+            id="cartBtn"
+            aria-label="Ouvrir/Fermer le panier"
+            class="relative inline-flex items-center gap-2 px-4 py-2 bg-red-500 text-white shadow rounded-md hover:bg-red-600 transition-colors"
+          >
+            🛒 <span id="cartCount" class="text-sm font-medium">0</span>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="max-w-6xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center gap-8"
+    >
+      <div class="md:w-2/5">
+        <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          Douni Market — Élégance & Prix Cassés
+        </h2>
+        <p class="mt-4 text-gray-700">
+          Votre destination pour des produits de qualité. <br />
+          Découvrez nos Tissus Good Luck & crêpes exclusifs, colliers &
+          piercings élégants et bouquets uniques. Livraison rapide partout au
+          Bénin. La satisfaction est notre priorité.
+        </p>
+
+        <div class="mt-6 flex gap-3">
+          <a
+            href="#shop"
+            class="px-5 py-3 rounded-md bg-gradient-to-r from-pink-400 to-yellow-400 text-white font-semibold shadow transition-all duration-300 hover:shadow-lg hover:brightness-110 active:scale-95"
+            >Voir la boutique</a
+          >
+          <a
+            href="#contact"
+            class="px-5 py-3 rounded-md border border-gray-300 transition-all duration-300 hover:bg-gray-100 hover:border-gray-400 active:scale-95"
+            >Contact/Commande</a
+          >
+        </div>
+
+        <div class="mt-8 text-sm text-gray-600">
+          Offre spéciale anniversaire :
+          <span class="font-semibold">-10% sur les bouquets</span> (code:
+          ANNIV10)
+        </div>
+      </div>
+
+      <div class="md:w-3/5">
+        <div id="heroCards" class="grid grid-cols-2 gap-4">
+          <div
+            class="rounded-xl overflow-hidden shadow product-card bg-white p-2"
+          >
+            <img
+              src="assets/img/Tissus.jpg"
+              alt="tissu"
+              class="w-full h-40 object-cover rounded-md"
+            />
+            <div class="mt-2 font-medium">Tissus</div>
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow product-card bg-white p-2"
+          >
+            <img
+              src="assets/img/Bouquet.jpg"
+              alt="bouquet"
+              class="w-full h-40 object-cover rounded-md"
+            />
+            <div class="mt-2 font-medium">Bouquet</div>
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow product-card bg-white p-2"
+          >
+            <img
+              src="assets/img/Collier.jpg"
+              alt="collier"
+              class="w-full h-40 object-cover rounded-md"
+            />
+            <div class="mt-2 font-medium">Collier</div>
+          </div>
+          <div
+            class="rounded-xl overflow-hidden shadow product-card bg-white p-2"
+          >
+            <img
+              src="assets/img/Piercing.jpg"
+              alt="piercing"
+              class="w-full h-40 object-cover rounded-md"
+            />
+            <div class="mt-2 font-medium">Piercings</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section id="shop" class="max-w-6xl mx-auto px-4 py-8 scroll-mt-20">
+      <h3 class="text-2xl font-semibold mb-4">Boutique</h3>
+      <div class="mb-6 flex gap-3 flex-wrap">
+        <button
+          class="categoryBtn px-3 py-1 rounded-full border active-category"
+        >
+          Tous
+        </button>
+        <button class="categoryBtn px-3 py-1 rounded-full border">
+          Tissus
+        </button>
+        <button class="categoryBtn px-3 py-1 rounded-full border">
+          Bijoux
+        </button>
+        <button class="categoryBtn px-3 py-1 rounded-full border">
+          Bouquets
+        </button>
+      </div>
+
+      <!-- product grid -->
+      <div
+        id="productGrid"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      ></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h3 class="text-2xl font-semibold">À propos de Douni Market</h3>
+          <p class="mt-3 text-gray-700">
+            Chez Douni Market, chaque détail compte. Des tissus Good Luck et
+            crêpes aux bijoux raffinés et bouquets uniques, tout est
+            soigneusement choisi pour vous offrir qualité et authenticité.
+          </p>
+
+          <ul class="mt-4 space-y-2">
+            <li>
+              ✨ Notre mission Offrir des articles d’exception qui allient
+              qualité, style et authenticité, pour que chaque expérience Douni
+              Market soit unique et mémorable.
+            </li>
+            <li>💎 Style & qualité – des produits qui font la différence</li>
+            <li>💰 Meilleurs prix – élégance sans se ruiner</li>
+            <li>🚚 Livraison partout au Bénin – rapide et fiable</li>
+          </ul>
+        </div>
+
+        <div class="relative rounded-xl overflow-hidden shadow p-4 bg-white">
+          <!-- Carousel Structure -->
+          <div id="aboutCarousel" class="overflow-hidden">
+            <div
+              id="carouselTrack"
+              class="flex transition-transform duration-500 ease-in-out"
+            >
+              <!-- Slides (will be populated by JS or use placeholders) -->
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel1.jpg"
+                  alt="Réalisation 1"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel2.jpg"
+                  alt="Réalisation 2"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel3.jpg"
+                  alt="Réalisation 3"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel4.jpg"
+                  alt="Réalisation 4"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel5.jpg"
+                  alt="Réalisation 5"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel6.jpg"
+                  alt="Réalisation 6"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel7.jpg"
+                  alt="Réalisation 7"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel8.jpg"
+                  alt="Réalisation 8"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+              <div class="flex-shrink-0 w-full">
+                <img
+                  src="assets/img/Carousel9.jpg"
+                  alt="Réalisation 9"
+                  class="w-full h-64 object-cover rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Navigation Buttons -->
+          <button
+            id="prevSlide"
+            class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md z-10"
+          >
+            ‹
+          </button>
+          <button
+            id="nextSlide"
+            class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md z-10"
+          >
+            ›
+          </button>
+          <div class="mt-3 text-sm text-gray-600">
+            Livraison, emballage soigné et contact client réactif.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="max-w-6xl mx-auto px-4 py-12">
+      <h3 class="text-2xl font-semibold mb-4 text-center">
+        Avis de nos clients
+      </h3>
+      <div class="relative overflow-hidden">
+        <div
+          id="reviewsCarousel"
+          class="flex transition-transform duration-500 ease-in-out"
+        >
+          <!-- Review 1 -->
+          <div class="w-full flex-shrink-0 flex justify-center">
+            <div
+              class="bg-white p-6 rounded-lg shadow-lg max-w-2xl text-center"
+            >
+              <p class="text-gray-600 italic">
+                "Service client au top, livraison super rapide et les tissus
+                sont magnifiques. Je recommande vivement Douni Market !"
+              </p>
+              <p class="mt-4 font-semibold">- Aïcha K.</p>
+            </div>
+          </div>
+          <!-- Review 2 -->
+          <div class="w-full flex-shrink-0 flex justify-center">
+            <div
+              class="bg-white p-6 rounded-lg shadow-lg max-w-2xl text-center"
+            >
+              <p class="text-gray-600 italic">
+                "J'ai commandé un bouquet pour l'anniversaire de ma mère, il
+                était encore plus beau en vrai. Merci !"
+              </p>
+              <p class="mt-4 font-semibold">- Marc A.</p>
+            </div>
+          </div>
+          <!-- Review 3 -->
+          <div class="w-full flex-shrink-0 flex justify-center">
+            <div
+              class="bg-white p-6 rounded-lg shadow-lg max-w-2xl text-center"
+            >
+              <p class="text-gray-600 italic">
+                "Les prix sont imbattables pour cette qualité. Je suis très
+                satisfaite de mes achats."
+              </p>
+              <p class="mt-4 font-semibold">- Fati B.</p>
+            </div>
+          </div>
+        </div>
+        <button
+          id="prevReview"
+          class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md z-10"
+        >
+          ‹
+        </button>
+        <button
+          id="nextReview"
+          class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md z-10"
+        >
+          ›
+        </button>
+      </div>
+    </section>
+
+    <!-- GSAP Video Section -->
+    <!-- <section class="max-w-6xl mx-auto px-4 py-12">
+		    <div id="videoContainer" class="relative h-[50vh] md:h-[70vh] overflow-hidden rounded-xl shadow-2xl bg-gray-200">
+		      <video id="gsapVideo" class="w-full h-full object-cover" src="assets/video/VideoGSAP.mp4" autoplay loop muted playsinline preload="auto"></video>
+		    </div>
+		  </section> -->
+
+    <!-- CONTACT / CHECKOUT -->
+    <section id="contact" class="max-w-6xl mx-auto px-4 py-4">
+      <h3 class="text-2xl font-semibold mb-4">Contact & Commande</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-md shadow">
+          <h4 class="font-semibold mb-2">Commander via formulaire</h4>
+          <form id="orderForm" class="space-y-3">
+            <input
+              required
+              name="name"
+              placeholder="Votre nom"
+              class="w-full px-3 py-2 border rounded-md"
+            />
+            <input
+              required
+              name="phone"
+              placeholder="Téléphone (ex: +22958...)"
+              class="w-full px-3 py-2 border rounded-md"
+            />
+            <textarea
+              required
+              name="message"
+              placeholder="Détails commande (produit, quantité, livraison...)"
+              class="w-full px-3 py-2 border rounded-md"
+            ></textarea>
+            <div class="flex gap-3">
+              <button
+                type="submit"
+                class="px-4 py-2 rounded-md bg-green-500 text-white transition-all duration-300 hover:bg-green-600 active:scale-95"
+              >
+                Envoyer commande
+              </button>
+              <button
+                id="whatsappQuick"
+                type="button"
+                class="px-4 py-2 rounded-md border transition-all duration-300 hover:bg-gray-100 hover:border-gray-400 active:scale-95"
+              >
+                Commander via WhatsApp
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="bg-white p-6 rounded-md shadow">
+          <h4 class="font-semibold mb-2">Infos livraison</h4>
+          <div class="space-y-2 text-sm text-gray-700">
+            <p>🚚 Livraison rapide partout au Bénin</p>
+            <p>💳 Paiement Mobile Money accepté</p>
+            <p>
+              Frais variables selon la distance — contactez-nous pour un devis
+              rapide.
+            </p>
+          </div>
+
+          <div class="mt-4">
+            <p class="text-sm text-gray-600">Téléphone / WhatsApp :</p>
+            <p class="font-medium">
+              <a
+                href="https://wa.me/22958369975"
+                target="_blank"
+                class="flex items-center underline decoration-gray-800 hover:decoration-blue-500 hover:text-blue-500 transition-colors duration-200"
+                ><img
+                  src="https://img.icons8.com/color/48/whatsapp--v1.png"
+                  alt="WhatsApp"
+                  class="w-6 h-6 mr-2"
+                />+229 58 36 99 75</a
+              ><a
+                href="tel:+2290152250724"
+                class="flex items-center mt-2 underline decoration-gray-800 hover:decoration-blue-500 hover:text-blue-500 transition-colors duration-200"
+                ><img
+                  src="https://img.icons8.com/color/48/phone.png"
+                  alt="Phone"
+                  class="w-6 h-6 mr-2"
+                />+229 01 52 25 07 24</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div
+      id="cartDrawer"
+      class="fixed right-4 top-16 z-50 w-96 max-w-full transform translate-x-full transition-transform duration-300 ease-in-out"
+    >
+      <div class="bg-white rounded-lg shadow p-4">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold">Panier</h4>
+          <button id="closeCart">✖</button>
+        </div>
+
+        <div class="cart-list mt-4 space-y-3" id="cartList"></div>
+
+        <div class="mt-4 border-t pt-4">
+          <div class="flex justify-between items-center">
+            <span>Total</span><span id="cartTotal">0 FCFA</span>
+          </div>
+          <div class="mt-3 flex gap-2">
+            <button
+              id="checkoutBtn"
+              class="flex-1 px-3 py-2 rounded-md bg-blue-500 text-white"
+            >
+              Commander (WhatsApp)
+            </button>
+            <button id="clearCart" class="px-3 py-2 rounded-md border">
+              Vider
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-12 py-8 border-t text-center">
+      <div class="max-w-6xl mx-auto px-4 text-sm text-gray-600">
+        © Douni Market — Livraison partout au Bénin<br />Réalisé par Dev_Ichola
+      </div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
