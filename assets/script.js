@@ -13,10 +13,11 @@ const PRODUCTS = [
     id: 2,
     title: "Tissus Crêpes",
     category: "Tissus",
-    price: 10000,
-    old_price: 13000,
+    price: 5000,
+    old_price: 7000,
     image: "assets/img/TissusCrepes.jpg",
-    description: "Tissus Crêpes de qualité, doux et résistant.",
+    description:
+      "Tissus Crêpes de qualité, doux et résistant (5 000 FCFA pour 4yards!).",
   },
   {
     id: 3,
@@ -26,14 +27,14 @@ const PRODUCTS = [
     old_price: 60000,
     image: "assets/img/BouquetDargent.jpg",
     description:
-      "Bouquet d'argent personnalisé, prix variable (à partir de 25.000 FCFA).",
+      "Coffret personnalisé (à partir de 15 000) + main-d’œuvre: 7 000 FCFA.",
   },
   {
     id: 4,
     title: "Colliers et Piercings",
     category: "Bijoux",
-    price: 5000,
-    old_price: 7000,
+    price: 2000,
+    old_price: 3500,
     image: "assets/img/piercingEtColliers.jpg",
     description: "Assortiment de colliers et piercings fantaisie.",
   },
@@ -41,19 +42,20 @@ const PRODUCTS = [
     id: 5,
     title: "Bouquet Satin (Roses)",
     category: "Bouquets",
-    price: 12000,
-    old_price: 15000,
+    price: 5000,
+    old_price: 7000,
     image: "assets/img/BouquetSatin.jpg",
-    description: "Bouquet de roses en satin, finition soignée.",
+    description:
+      "Bouquet de roses en satin, finition soignée (à partir de 5 000 FCFA).",
   },
   {
     id: 6,
-    title: "Bouquet Chocolat",
+    title: "Bouquet de Photo & Chocolat",
     category: "Bouquets",
-    price: 15000,
-    old_price: 20000,
+    price: 6000,
+    old_price: 8000,
     image: "assets/img/BouquetChocolat.jpg",
-    description: "Bouquet gourmand en chocolat artisanal.",
+    description: "Bouquet gourmand en chocolat artisanal et photos.",
   },
   {
     id: 7,
@@ -68,8 +70,8 @@ const PRODUCTS = [
     id: 8,
     title: "Faux tatouage pack",
     category: "Bijoux",
-    price: 8000,
-    old_price: 10000,
+    price: 2000,
+    old_price: 3500,
     image: "assets/img/FauxTatouages.jpg",
     description: "Pack exclusif de faux tatouages temporaires.",
   },
@@ -172,9 +174,107 @@ function renderProducts(list = PRODUCTS) {
 function openProductModal(id) {
   const p = PRODUCTS.find((x) => x.id === id);
   if (!p) return alert("Produit introuvable");
+
+  let extraContent = "";
+
+  if (id === 3) {
+    extraContent = `
+        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl shadow-2xl border border-pink-200 w-3/6 max-w-md max-h-[80vh] overflow-y-auto">
+        
+        <!-- En-tête avec bouton fermer -->
+        <div class="sticky top-0 bg-gradient-to-r from-pink-500 to-pink-600 p-4 rounded-xl flex justify-between items-center">
+            <h5 class="text-lg font-bold">Détail des Frais de Main d'Œuvre</h5>
+            <button id="modalClose" onclick="this.closest('.fixed').remove()" class="font-bold rounded-full w-8 h-8 flex items-center justify-center transition">
+                ✕
+            </button>
+        </div>
+
+        <!-- Contenu du tableau -->
+        <div class="p-4">
+            <!-- En-tête du tableau -->
+            <div class="grid grid-cols-2 gap-3 p-3 bg-pink-100 rounded-xl font-semibold text-pink-700 text-sm mb-3">
+                <div class="text-left">Valeur du Coffret</div>
+                <div class="text-right">Main d'Œuvre</div>
+            </div>
+
+            <!-- Lignes du tableau -->
+            <div class="space-y-2">
+                <div class="grid grid-cols-2 gap-3 p-2.5 hover:bg-pink-50 rounded-lg transition text-sm">
+                    <div>10.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">5.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 bg-pink-50 rounded-lg text-sm">
+                    <div>15.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">7.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 hover:bg-pink-50 rounded-lg transition text-sm">
+                    <div>20.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">10.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 bg-pink-50 rounded-lg text-sm">
+                    <div>30.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">12.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 hover:bg-pink-50 rounded-lg transition text-sm">
+                    <div>50.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">15.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 bg-pink-50 rounded-lg text-sm">
+                    <div>70.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">16.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 hover:bg-pink-50 rounded-lg transition text-sm">
+                    <div>80.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">17.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 bg-pink-50 rounded-lg text-sm">
+                    <div>90.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">20.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 hover:bg-pink-50 rounded-lg transition text-sm">
+                    <div>100.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">20.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 bg-pink-50 rounded-lg text-sm">
+                    <div>400.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">25.000 FCFA</div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 p-2.5 hover:bg-pink-50 rounded-lg transition text-sm">
+                    <div>500.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">30.000 FCFA</div>
+                </div>
+            </div>
+
+            <!-- Note en bas -->
+            <div class="mt-4 p-3 bg-pink-50 rounded-xl">
+                <p class="font-bold text-xs text-center text-gray-600">
+                    💡 Le prix final d'un bouquet d'argent = valeur du coffret + main d'œuvre.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+    `;
+  }
+
   const modal = document.createElement("div");
-  modal.className =
-    "fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4";
+modal.className = "fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4";
+
+if (id === 3) {
+  modal.innerHTML = `${extraContent}`;
+  modal.querySelector("#modalClose").addEventListener("click", () => modal.remove());
+} else {
   modal.innerHTML = `
     <div class="bg-white rounded-lg max-w-2xl w-full overflow-hidden">
           <div class="grid md:grid-cols-2">
@@ -184,6 +284,7 @@ function openProductModal(id) {
             <div class="p-4">
               <h4 class="text-xl font-semibold">${p.title}</h4>
               <p class="text-sm text-gray-600 my-2">${p.description}</p>
+              ${extraContent} <!-- Tableau de prix inséré ici -->
               <div class="font-medium mb-3">${p.price.toLocaleString()} FCFA</div>
               <div class="flex gap-2">
                 <input id="qtyInput" type="number" min="1" value="1" class="w-20 px-2 py-1 border rounded-md">
@@ -194,6 +295,7 @@ function openProductModal(id) {
           </div>
         </div>
   `;
+}
   document.body.appendChild(modal);
   modal.addEventListener("click", (e) => {
     if (e.target === modal) modal.remove();
