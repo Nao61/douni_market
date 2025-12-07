@@ -247,12 +247,12 @@ function openProductModal(id) {
 
                 <div class="grid grid-cols-2 gap-3 p-2.5 bg-pink-50 rounded-lg text-sm">
                     <div>400.000 FCFA</div>
-                    <div class="text-right font-medium text-pink-600">25.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">30.000 FCFA</div>
                 </div>
 
                 <div class="grid grid-cols-2 gap-3 p-2.5 hover:bg-pink-50 rounded-lg transition text-sm">
                     <div>500.000 FCFA</div>
-                    <div class="text-right font-medium text-pink-600">30.000 FCFA</div>
+                    <div class="text-right font-medium text-pink-600">35.000 FCFA</div>
                 </div>
             </div>
 
