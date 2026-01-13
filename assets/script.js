@@ -1,4 +1,3 @@
-// PRODUCTS DATA (Moved from index.html)
 const PRODUCTS = [
   // {
   //   id: 1,
@@ -49,10 +48,10 @@ const PRODUCTS = [
   // },
   {
     id: 4,
-    title: "Bouquets rose chocolats avec papillon",
+    title: "Bouquets rose chocolats",
     category: "Bouquets",
-    price: 7000,
-    old_price: 5000,
+    price: 6000,
+    old_price: 8000,
     image: "assets/img/BouquetIII.jpeg",
     description: "Coffret personnalisé (à partir de 1 000 FCFA la tige)",
   },
@@ -106,8 +105,8 @@ const PRODUCTS = [
     id: 9,
     title: "Bouquet élégant",
     category: "Bouquets",
-    price: 7000,
-    old_price: 5000,
+    price: 5000,
+    old_price: 7000,
     image: "assets/img/BouquetI.jpeg",
     description: "Bouquet artificiel, finition soignée (à partir de 5 000 FCFA).",
   },
