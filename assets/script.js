@@ -239,7 +239,7 @@ function openProductModal(id) {
 
   let extraContent = "";
 
-  if (id === 3) {
+  if (id === 4) {
     extraContent = `
         <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl shadow-2xl border border-pink-200 w-3/6 max-w-md max-h-[80vh] overflow-y-auto">
@@ -333,7 +333,7 @@ function openProductModal(id) {
   const modal = document.createElement("div");
 modal.className = "fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4";
 
-if (id === 3) {
+if (id === 4) {
   modal.innerHTML = `${extraContent}`;
   modal.querySelector("#modalClose").addEventListener("click", () => modal.remove());
 } else {
