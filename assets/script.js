@@ -10,6 +10,15 @@ const PRODUCTS = [
   // },
   {
     id: 1,
+    title: "Duo Royal : Roses & Chocolats",
+    category: "Bouquets",
+    price: 10000,
+    old_price: 12000,
+    image: "assets/img/Coffret_chocolat.jpeg",
+    description: "Offrez une expérience sensorielle inoubliable (à partir de 10 000 FCFA).",
+  },
+  {
+    id: 2,
     title: "Bouquet Artificiel",
     category: "Bouquets",
     price: 6000,
@@ -18,7 +27,7 @@ const PRODUCTS = [
     description: "Bouquet artificiel, finition soignée (à partir de 6 000 FCFA).",
   },
   {
-    id: 2,
+    id: 3,
     title: "Bouquet aux doux papillons",
     category: "Bouquets",
     price: 15000,
@@ -28,7 +37,7 @@ const PRODUCTS = [
       "Bouquets deux tons finition soignée (à partir de 15 000 FCFA).",
   },
   {
-    id: 3,
+    id: 4,
     title: "Bouquet d'Argent",
     category: "Bouquets",
     price: 50000,
@@ -47,7 +56,7 @@ const PRODUCTS = [
   //   description: "Assortiment de colliers et piercings fantaisie.",
   // },
   {
-    id: 4,
+    id: 5,
     title: "Bouquets rose chocolats",
     category: "Bouquets",
     price: 6000,
@@ -56,7 +65,7 @@ const PRODUCTS = [
     description: "Coffret personnalisé (à partir de 1 000 FCFA la tige)",
   },
   {
-    id: 5,
+    id: 6,
     title: "Bouquet Satin (Roses)",
     category: "Bouquets",
     price: 5000,
@@ -66,7 +75,7 @@ const PRODUCTS = [
       "Bouquet de roses en satin, finition soignée (à partir de 5 000 FCFA).",
   },
   {
-    id: 6,
+    id: 7,
     title: "Bouquet de Photo & Chocolat",
     category: "Bouquets",
     price: 6000,
@@ -75,7 +84,7 @@ const PRODUCTS = [
     description: "Bouquet gourmand en chocolat artisanal et photos.",
   },
   {
-    id: 7,
+    id: 8,
     title: "Bouquet Casquettes (Original)",
     category: "Bouquets",
     price: 25000,
@@ -93,7 +102,7 @@ const PRODUCTS = [
   //   description: "Pack exclusif de faux tatouages temporaires.",
   // },
   {
-    id: 8,
+    id: 9,
     title: "Bouquet 2 en 1",
     category: "Bouquets",
     price: 30000,
@@ -102,7 +111,7 @@ const PRODUCTS = [
     description: "Un coup deux pierres pour vos bouquets (à partir de 30 000 FCFA).",
   },
   {
-    id: 9,
+    id: 10,
     title: "Bouquet élégant",
     category: "Bouquets",
     price: 5000,
@@ -111,7 +120,7 @@ const PRODUCTS = [
     description: "Bouquet artificiel, finition soignée (à partir de 5 000 FCFA).",
   },
   {
-    id: 10,
+    id: 11,
     title: "Bouquet doux avec Couronne",
     category: "Bouquets",
     price: 10000,
@@ -120,7 +129,7 @@ const PRODUCTS = [
     description: "Bouquet Special, finition soignée (à partir de 10 000 FCFA).",
   },
   {
-    id: 11,
+    id: 12,
     title: "Bouquet romantique",
     category: "Bouquets",
     price: 5000,
