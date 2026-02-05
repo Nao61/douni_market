@@ -57,10 +57,10 @@ const PRODUCTS = [
   // },
   {
     id: 5,
-    title: "Bouquets rose chocolats",
+    title: "Bouquets en Satin",
     category: "Bouquets",
-    price: 6000,
-    old_price: 8000,
+    price: 15000,
+    old_price: 18000,
     image: "assets/img/BouquetIII.jpeg",
     description: "Coffret personnalisé (à partir de 1 000 FCFA la tige)",
   },
@@ -68,11 +68,11 @@ const PRODUCTS = [
     id: 6,
     title: "Bouquet Satin (Roses)",
     category: "Bouquets",
-    price: 5000,
-    old_price: 7000,
+    price: 8000,
+    old_price: 10000,
     image: "assets/img/BouquetSatin.jpg",
     description:
-      "Bouquet de roses en satin, finition soignée (à partir de 5 000 FCFA).",
+      "Bouquet de roses en satin, finition soignée (à partir de 8 000 FCFA).",
   },
   {
     id: 7,
@@ -103,6 +103,15 @@ const PRODUCTS = [
   // },
   {
     id: 9,
+    title: "Bouquet Reine à la paillette",
+    category: "Bouquets",
+    price: 22000,
+    old_price: 25000,
+    image: "assets/img/BouquetPaillette.jpeg",
+    description: "Offrez un bouquet de luxe étincelante (à partir de 22 000 FCFA).",
+  },
+  {
+    id: 10,
     title: "Bouquet 2 en 1",
     category: "Bouquets",
     price: 30000,
@@ -111,7 +120,7 @@ const PRODUCTS = [
     description: "Un coup deux pierres pour vos bouquets (à partir de 30 000 FCFA).",
   },
   {
-    id: 10,
+    id: 11,
     title: "Bouquet élégant",
     category: "Bouquets",
     price: 5000,
@@ -120,7 +129,7 @@ const PRODUCTS = [
     description: "Bouquet artificiel, finition soignée (à partir de 5 000 FCFA).",
   },
   {
-    id: 11,
+    id: 12,
     title: "Bouquet doux avec Couronne",
     category: "Bouquets",
     price: 10000,
@@ -129,7 +138,7 @@ const PRODUCTS = [
     description: "Bouquet Special, finition soignée (à partir de 10 000 FCFA).",
   },
   {
-    id: 12,
+    id: 13,
     title: "Bouquet romantique",
     category: "Bouquets",
     price: 5000,
