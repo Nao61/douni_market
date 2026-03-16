@@ -40,9 +40,9 @@ const PRODUCTS = [
     id: 4,
     title: "Bouquet d'Argent",
     category: "Bouquets",
-    price: 50000,
-    old_price: 60000,
-    image: "assets/img/BouquetDargent.jpg",
+    price: 15000,
+    old_price: 19000,
+    image: "assets/img/BouquetArgent.jpeg",
     description:
       "Coffret personnalisé (à partir de 15 000) + main-d’œuvre: 7 000 FCFA.",
   },
@@ -66,13 +66,13 @@ const PRODUCTS = [
   },
   {
     id: 6,
-    title: "Bouquet Satin (Roses)",
+    title: "Bouquet HBD",
     category: "Bouquets",
     price: 8000,
     old_price: 10000,
     image: "assets/img/BouquetSatin.jpg",
     description:
-      "Bouquet de roses en satin, finition soignée (à partir de 8 000 FCFA).",
+      "Bouquet artificiel, finition soignée (à partir de 8 000 FCFA).",
   },
   {
     id: 7,
@@ -130,7 +130,7 @@ const PRODUCTS = [
   },
   {
     id: 12,
-    title: "Bouquet doux avec Couronne",
+    title: "Favori Rose avec Couronne",
     category: "Bouquets",
     price: 10000,
     old_price: 15000,
@@ -139,7 +139,7 @@ const PRODUCTS = [
   },
   {
     id: 13,
-    title: "Bouquet romantique",
+    title: "Best Seller",
     category: "Bouquets",
     price: 5000,
     old_price: 7000,
